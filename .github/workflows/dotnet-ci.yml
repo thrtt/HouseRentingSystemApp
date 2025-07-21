@@ -3,18 +3,16 @@ name: .NET CI
 on:
   push:
     branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Setup .NET 8.0
+      - name: Setup .NET 8
         uses: actions/setup-dotnet@v3
         with:
           dotnet-version: '8.0.x'
@@ -22,8 +20,8 @@ jobs:
       - name: Restore dependencies
         run: dotnet restore
 
-      - name: Build
+      - name: Build project
         run: dotnet build --no-restore --configuration Release
 
-      - name: Test
+      - name: Test project
         run: dotnet test --no-build --verbosity normal
