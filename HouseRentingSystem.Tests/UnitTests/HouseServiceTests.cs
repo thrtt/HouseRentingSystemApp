@@ -1,4 +1,4 @@
-﻿using NUnit.Framework.Legacy;
+﻿using NUnit.Framework;
 using HouseRentingSystem.Services.Data.Entities;
 using HouseRentingSystem.Services.Houses;
 using HouseRentingSystem.Services.Users;
@@ -35,7 +35,7 @@ namespace HouseRentingSystem.Tests.UnitTests
 
             // Assert a returned house data is correct
             var resultHouse = result.Houses.FirstOrDefault();
-            ClassicAssert.IsNotNull(result);
+            Assert.IsNotNull(result);
 
             var houseInDb = housesInDb.FirstOrDefault();
             Assert.Multiple(() =>

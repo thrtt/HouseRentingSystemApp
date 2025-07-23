@@ -1,4 +1,4 @@
-﻿using NUnit.Framework.Legacy;
+﻿using NUnit.Framework;
 using HouseRentingSystem.Services.Statistics;
 
 namespace HouseRentingSystem.Tests.UnitTests
@@ -21,15 +21,15 @@ namespace HouseRentingSystem.Tests.UnitTests
             var result = this.statisticsService.Total();
 
             // Assert the returned result is not null
-            ClassicAssert.IsNotNull(result);
+            Assert.IsNotNull(result);
 
             // Assert the returned houses' count is correct
             var housesCount = this.data.Houses.Count();
-            ClassicAssert.AreEqual(housesCount, result.TotalHouses);
+            Assert.AreEqual(housesCount, result.TotalHouses);
 
             // Assert the returned rents' count is correct
             var rentsCount = this.data.Houses.Where(h => h.RenterId != null).Count();
-            ClassicAssert.AreEqual(rentsCount, result.TotalRents);
+            Assert.AreEqual(rentsCount, result.TotalRents);
         }
     }
 }

@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using NUnit.Framework.Legacy;
+using NUnit.Framework;
 using HouseRentingSystem.Web.Controllers;
 
 namespace HouseRentingSystem.Tests.IntegrationsTests
@@ -28,11 +28,11 @@ namespace HouseRentingSystem.Tests.IntegrationsTests
             var result = _homeController.Error(statusCode);
 
             // Assert the returned result is not null
-            ClassicAssert.IsNotNull(result);
+            Assert.IsNotNull(result);
 
             // Assert the returned result is a view
             var viewResult = result as ViewResult;
-            ClassicAssert.IsNotNull(viewResult);
+            Assert.IsNotNull(viewResult);
         }
     }
 }

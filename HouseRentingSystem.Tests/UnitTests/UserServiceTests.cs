@@ -1,4 +1,4 @@
-﻿using NUnit.Framework.Legacy;
+﻿using NUnit.Framework;
 using HouseRentingSystem.Services.Users;
 
 namespace HouseRentingSystem.Tests.UnitTests
@@ -21,7 +21,7 @@ namespace HouseRentingSystem.Tests.UnitTests
             var result = this.userService.UserHasRents(this.Renter.Id);
 
             // Assert the retunred result is true
-            ClassicAssert.IsTrue(result);
+            Assert.IsTrue(result);
         }
 
         [Test]
@@ -35,7 +35,7 @@ namespace HouseRentingSystem.Tests.UnitTests
             // Assert the returned result is correct
             var renterFullName = this.Renter.FirstName + " " +
                 this.Renter.LastName;
-            ClassicAssert.AreEqual(renterFullName, result);
+            Assert.AreEqual(renterFullName, result);
         }
 
         [Test]
@@ -49,18 +49,18 @@ namespace HouseRentingSystem.Tests.UnitTests
             // Assert the returned users' count is correct
             var usersCount = this.data.Users.Count();
             var resultUsers = result.ToList();
-            ClassicAssert.AreEqual(usersCount, resultUsers.Count());
+            Assert.AreEqual(usersCount, resultUsers.Count());
 
             // Assert the returned agents' count is correct
             var agentsCount = this.data.Agents.Count();
             var resultAgents = resultUsers.Where(us => us.PhoneNumber != "");
-            ClassicAssert.AreEqual(agentsCount, resultAgents.Count());
+            Assert.AreEqual(agentsCount, resultAgents.Count());
 
             // Assert a returned agent data is correct
             var agentUser = resultAgents
                 .FirstOrDefault(ag => ag.Email == this.Agent.User.Email);
-            ClassicAssert.IsNotNull(agentUser);
-            ClassicAssert.AreEqual(this.Agent.PhoneNumber, agentUser.PhoneNumber);
+            Assert.IsNotNull(agentUser);
+            Assert(this.Agent.PhoneNumber, agentUser.PhoneNumber);
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿using NUnit.Framework.Legacy;
+﻿using NUnit.Framework;
 using HouseRentingSystem.Services.Agents;
 
 namespace HouseRentingSystem.Tests.UnitTests
@@ -21,7 +21,7 @@ namespace HouseRentingSystem.Tests.UnitTests
             var resultAgentId = this.agentService.GetAgentId(this.Agent.UserId);
 
             // Assert a correct id is returned
-            ClassicAssert.AreEqual(this.Agent.Id, resultAgentId);
+            Assert.AreEqual(this.Agent.Id, resultAgentId);
         }
 
        [Test]
@@ -33,7 +33,7 @@ namespace HouseRentingSystem.Tests.UnitTests
             var result = this.agentService.ExistsById(this.Agent.UserId);
 
             // Assert the method result is true
-            ClassicAssert.IsTrue(result);
+            Assert.IsTrue(result);
         }
 
        
