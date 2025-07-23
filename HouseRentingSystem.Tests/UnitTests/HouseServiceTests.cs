@@ -72,7 +72,7 @@ namespace HouseRentingSystem.Tests.UnitTests
             var result = this.houseService.AllHousesByAgentId(agentId);
 
             // Assert the returned result is not null
-            ClassicAssert.IsNotNull(result);
+            Assert.IsNotNull(result);
 
             // Assert the returned houses' count is correct
             var housesInDb = this.data.Houses
@@ -90,7 +90,7 @@ namespace HouseRentingSystem.Tests.UnitTests
             var result = this.houseService.AllHousesByUserId(renterId);
 
             // Assert the returned result is not null
-            ClassicAssert.IsNotNull(result);
+            Assert.IsNotNull(result);
 
             // Assert the returned houses' count is correct
             var housesInDb = this.data.Houses
@@ -108,7 +108,7 @@ namespace HouseRentingSystem.Tests.UnitTests
             var result = this.houseService.Exists(houseId);
 
             // Assert the returned result is true
-            ClassicAssert.IsTrue(result);
+            Assert.IsTrue(result);
         }
 
         [Test]
@@ -121,7 +121,7 @@ namespace HouseRentingSystem.Tests.UnitTests
             var result = this.houseService.HouseDetailsById(houseId);
 
             // Assert the returned result is not null
-            ClassicAssert.IsNotNull(result);
+            Assert.IsNotNull(result);
 
             // Assert the returned result data is correct
             var houseInDb = this.data.Houses.Find(houseId);
@@ -156,7 +156,7 @@ namespace HouseRentingSystem.Tests.UnitTests
             var result = this.houseService.CategoryExists(categoryId);
 
             // Assert the returned result is true
-            ClassicAssert.IsTrue(result);
+            Assert.IsTrue(result);
         }
 
         [Test]
@@ -198,7 +198,7 @@ namespace HouseRentingSystem.Tests.UnitTests
             var result = this.houseService.HasAgentWithId(houseId, userId);
 
             // Assert the returned result is true
-            ClassicAssert.IsTrue(result);
+            Assert.IsTrue(result);
         }
 
         [Test]
@@ -211,7 +211,7 @@ namespace HouseRentingSystem.Tests.UnitTests
             var result = this.houseService.GetHouseCategoryId(houseId);
 
             // Assert the returned result is not null
-            ClassicAssert.IsNotNull(result);
+            Assert.IsNotNull(result);
 
             // Assert the returned category is correct
             var categoryId = this.RentedHouse.Category.Id;
@@ -243,7 +243,7 @@ namespace HouseRentingSystem.Tests.UnitTests
 
             // Assert the house data in the database is correct
             var newHouseInDb = this.data.Houses.Find(house.Id);
-            ClassicAssert.IsNotNull(newHouseInDb);
+            Assert.IsNotNull(newHouseInDb);
             Assert.That(newHouseInDb.Title, Is.EqualTo(house.Title));
             Assert.That(newHouseInDb.Address, Is.EqualTo(changedAddress));
         }
@@ -275,7 +275,7 @@ namespace HouseRentingSystem.Tests.UnitTests
 
             // Assert the house is not present in the db
             var houseInDb = this.data.Houses.Find(house.Id);
-            ClassicAssert.IsNull(houseInDb);
+            Assert.IsNull(houseInDb);
         }
 
         [Test]
@@ -288,7 +288,7 @@ namespace HouseRentingSystem.Tests.UnitTests
             var result = this.houseService.IsRented(houseId);
 
             // Assert the returned result is true
-            ClassicAssert.IsTrue(result);
+            Assert.IsTrue(result);
         }
 
         [Test]
@@ -303,7 +303,7 @@ namespace HouseRentingSystem.Tests.UnitTests
                 .IsRentedByUserWithId(houseId, renterId);
 
             // Assert the returned result is true
-            ClassicAssert.IsTrue(result);
+            Assert.IsTrue(result);
         }
 
         [Test]
@@ -329,7 +329,7 @@ namespace HouseRentingSystem.Tests.UnitTests
 
             // Assert the house has correct data in the db
             var newHouseInDb = this.data.Houses.Find(house.Id);
-            ClassicAssert.IsNotNull(newHouseInDb);
+            Assert.IsNotNull(newHouseInDb);
             Assert.That(renterId, Is.EqualTo(house.RenterId));
         }
 
@@ -353,12 +353,12 @@ namespace HouseRentingSystem.Tests.UnitTests
             this.houseService.Leave(house.Id);
 
             // Assert the returned result is not null
-            ClassicAssert.IsNull(house.RenterId);
+            Assert.IsNull(house.RenterId);
 
             // Assert the house has correct data in the db
             var newHouseInDb = this.data.Houses.Find(house.Id);
-            ClassicAssert.IsNotNull(newHouseInDb);
-            ClassicAssert.IsNull(newHouseInDb.RenterId);
+            Assert.IsNotNull(newHouseInDb);
+            Assert.IsNull(newHouseInDb.RenterId);
         }
 
         [Test]

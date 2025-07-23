@@ -60,7 +60,7 @@ namespace HouseRentingSystem.Tests.UnitTests
             var agentUser = resultAgents
                 .FirstOrDefault(ag => ag.Email == this.Agent.User.Email);
             Assert.IsNotNull(agentUser);
-            Assert(this.Agent.PhoneNumber, agentUser.PhoneNumber);
+            Assert.AreEqual(this.Agent.PhoneNumber, agentUser.PhoneNumber);
         }
     }
 }

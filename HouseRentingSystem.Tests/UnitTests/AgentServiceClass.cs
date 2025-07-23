@@ -47,7 +47,7 @@ namespace HouseRentingSystem.Tests.UnitTests
                 .AgentWithPhoneNumberExists(this.Agent.PhoneNumber);
 
             // Assert the method result is true
-            ClassicAssert.IsTrue(result);
+            Assert.IsTrue(result);
         }
 
         
@@ -62,14 +62,14 @@ namespace HouseRentingSystem.Tests.UnitTests
 
             // Assert the agents' count has increased by 1
             var agentsCountAfter = this.data.Agents.Count();
-            ClassicAssert.AreEqual(agentsCountBefore + 1, agentsCountAfter);
+            Assert.AreEqual(agentsCountBefore + 1, agentsCountAfter);
 
             // Assert a new agent was created in the db with correct data
             var newAgentId = this.agentService.GetAgentId(this.Agent.UserId);
             var newAgentInDb = this.data.Agents.Find(newAgentId);
-            ClassicAssert.IsNotNull(newAgentInDb);
-            ClassicAssert.AreEqual(this.Agent.UserId, newAgentInDb.UserId);
-            ClassicAssert.AreEqual(this.Agent.PhoneNumber, newAgentInDb.PhoneNumber);
+            Assert.IsNotNull(newAgentInDb);
+            Assert.AreEqual(this.Agent.UserId, newAgentInDb.UserId);
+            Assert.AreEqual(this.Agent.PhoneNumber, newAgentInDb.PhoneNumber);
         }
     }
 }
